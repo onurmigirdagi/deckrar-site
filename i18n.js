@@ -3,11 +3,11 @@
     tr: {
       'meta.title': 'deck.rar · YKS için aralıklı tekrar kartları',
       'meta.desc': "deck.rar, YKS'ye hazırlananlar için her seferinde yeniden üretilen sorularla aralıklı tekrar yapan Android flashcard uygulamasıdır.",
-      'nav.features': 'Özellikler', 'nav.how': 'Nasıl çalışır', 'nav.subjects': 'Dersler', 'nav.journey': 'Gelişim', 'nav.faq': 'SSS', 'nav.contact': 'İletişim',
+      'nav.changes': 'Sorular', 'nav.features': 'Özellikler', 'nav.how': 'Nasıl çalışır', 'nav.subjects': 'Dersler', 'nav.journey': 'Gelişim', 'nav.faq': 'SSS', 'nav.contact': 'İletişim',
       'nav.cta': 'Haberdar ol',
       'hero.badge': "Şubat 2026'dan beri geliştiriliyor · yayına hazırlanıyor",
       'hero.h1a': 'Ezberi değil, ', 'hero.h1b': 'tekrarı', 'hero.h1c': ' planla.',
-      'hero.lead': 'deck.rar, bildiğin konuyu seyrek, unutmaya yaklaştığın konuyu sık sorar. Kartların çoğu her açılışta yeniden üretilir, böylece cevabı değil konuyu öğrenirsin.',
+      'hero.lead': 'deck.rar, bildiğin konuyu seyrek, unutmaya yaklaştığın konuyu sık sorar. Sorular hep değişir: aynı olgu her seferinde farklı bir soruyla gelir, böylece cevabı değil konuyu öğrenirsin.',
       'hero.cta1': 'Gelişmelerden haberdar ol', 'hero.cta2': 'Nasıl çalışır?',
       'demo.tag': 'Biyoloji · örnek soru', 'demo.q': 'ATP en çok hangi organelde üretilir?',
       'demo.o1': 'Ribozom', 'demo.o2': 'Mitokondri', 'demo.o3': 'Golgi cisimciği', 'demo.o4': 'Lizozom',
@@ -72,11 +72,11 @@
     en: {
       'meta.title': 'deck.rar · Spaced-repetition flashcards for the YKS exam',
       'meta.desc': 'deck.rar is an Android flashcard app for students preparing for the Turkish YKS exam. Questions are regenerated each time and scheduled with spaced repetition.',
-      'nav.features': 'Features', 'nav.how': 'How it works', 'nav.subjects': 'Subjects', 'nav.journey': 'Progress', 'nav.faq': 'FAQ', 'nav.contact': 'Contact',
+      'nav.changes': 'Questions', 'nav.features': 'Features', 'nav.how': 'How it works', 'nav.subjects': 'Subjects', 'nav.journey': 'Progress', 'nav.faq': 'FAQ', 'nav.contact': 'Contact',
       'nav.cta': 'Get updates',
       'hero.badge': 'In development since February 2026 · getting ready to launch',
       'hero.h1a': 'Plan your ', 'hero.h1b': 'repetition', 'hero.h1c': ', not your cramming.',
-      'hero.lead': 'deck.rar asks about what you know less often, and about what you are about to forget more often. Most cards are regenerated every time you open them, so you learn the topic, not the answer.',
+      'hero.lead': 'deck.rar asks about what you know less often, and about what you are about to forget more often. Questions keep changing: the same fact comes back as a different question each time, so you learn the topic, not the answer.',
       'hero.cta1': 'Get launch updates', 'hero.cta2': 'How does it work?',
       'demo.tag': 'Biology · sample question', 'demo.q': 'In which organelle is most ATP produced?',
       'demo.o1': 'Ribosome', 'demo.o2': 'Mitochondrion', 'demo.o3': 'Golgi apparatus', 'demo.o4': 'Lysosome',
@@ -167,7 +167,7 @@
     document.dispatchEvent(new CustomEvent('langchange', { detail: lang }));
   }
 
-  window.DR = { lang: pick(), t: function (k) { return D[window.DR.lang][k]; } };
+  window.DR = { lang: pick(), dict: D, t: function (k) { return D[window.DR.lang][k]; } };
   function set(lang) {
     window.DR.lang = lang;
     try { localStorage.setItem('lang', lang); } catch (e) {}

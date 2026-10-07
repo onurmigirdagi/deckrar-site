@@ -13,12 +13,14 @@
 <meta property="og:url" content="https://deckrar.tech/">
 <link rel="stylesheet" href="style.css">
 <script src="i18n.js" defer></script>
+<script src="demo.js" defer></script>
 </head>
 <body>
 <header class="nav">
   <div class="wrap">
     <a class="logo" href="#top"><img src="favicon.svg" alt="">deck.rar</a>
     <nav><ul>
+      <li><a href="#degisir" data-i18n="nav.changes">Sorular</a></li>
       <li><a href="#ozellikler" data-i18n="nav.features">Özellikler</a></li>
       <li><a href="#nasil" data-i18n="nav.how">Nasıl çalışır</a></li>
       <li><a href="#dersler" data-i18n="nav.subjects">Dersler</a></li>
@@ -48,21 +50,37 @@
       </div>
     </div>
     <div class="demo">
-      <div class="qcard" id="qcard">
-        <span class="tag" data-i18n="demo.tag">Biyoloji · örnek soru</span>
-        <p class="q" data-i18n="demo.q">ATP en çok hangi organelde üretilir?</p>
-        <div class="opts" id="opts">
-          <button type="button" class="opt" data-ok="0"><b>A</b><span data-i18n="demo.o1">Ribozom</span></button>
-          <button type="button" class="opt" data-ok="1"><b>B</b><span data-i18n="demo.o2">Mitokondri</span></button>
-          <button type="button" class="opt" data-ok="0"><b>C</b><span data-i18n="demo.o3">Golgi cisimciği</span></button>
-          <button type="button" class="opt" data-ok="0"><b>D</b><span data-i18n="demo.o4">Lizozom</span></button>
-        </div>
+      <div class="subj-tabs" role="group" aria-label="Ders / Subject">
+        <button type="button" data-subj="bio" aria-pressed="true" data-i18n="sub.bio">Biyoloji</button>
+        <button type="button" data-subj="fiz" aria-pressed="false" data-i18n="sub.phy">Fizik</button>
+        <button type="button" data-subj="kim" aria-pressed="false" data-i18n="sub.chem">Kimya</button>
+        <button type="button" data-subj="cog" aria-pressed="false" data-i18n="sub.geo">Coğrafya</button>
+        <button type="button" data-subj="tar" aria-pressed="false" data-i18n="sub.hist">Tarih</button>
+        <button type="button" data-subj="din" aria-pressed="false" data-i18n="sub.rel">Din Kültürü</button>
       </div>
-      <div class="result" id="result" aria-live="polite" data-i18n="demo.idle">Bir şık seç. Uygulamanın cevabına nasıl tepki verdiğini gör.</div>
-      <p class="rate-note" data-i18n="demo.note">Zorluğu sen işaretlemezsin: cevabın doğruluğu ve süresi tekrar zamanını belirler.</p>
+      <div class="qcard" id="qcard">
+        <span class="tag" id="qtag"></span>
+        <p class="q" id="qtext"></p>
+        <div class="opts" id="opts"></div>
+      </div>
+      <div class="result" id="result" aria-live="polite"></div>
+      <p class="rate-note" data-i18n="demo.note">Zorluğu sen işaretlemezsin: cevabın doğruluğu ve süresi tekrar zamanını belirler. Örnek sorular tanıtım içindir.</p>
     </div>
   </div>
 </main>
+
+<section id="degisir">
+  <div class="wrap">
+    <h2 data-i18n="al.h2">Sorular hep değişir</h2>
+    <p class="sub" data-i18n="al.sub">Aynı soruyu iki kez ezberleyemezsin. Her durumda uygulama sana yeni bir bakış açısı verir.</p>
+    <div class="grid">
+      <div class="feat"><div class="ico">✅</div><h3 data-i18n="al1.h">Doğru bildin → yeni soru</h3><p data-i18n="al1.p">Sıradaki kart farklı bir olguyu sorar. Doğru ve hızlı cevap kartın dönüşünü de geciktirir.</p></div>
+      <div class="feat"><div class="ico">🔀</div><h3 data-i18n="al2.h">Yanlış bildin → aynı olgu, farklı soru</h3><p data-i18n="al2.p">Kart tekrar öğrenme aşamasına girer ve aynı oturumda yeniden gelir. Bu sefer soru kökü ve şıklar farklıdır.</p></div>
+      <div class="feat"><div class="ico">🗓️</div><h3 data-i18n="al3.h">Tekrar vakti geldi → yine farklı soru</h3><p data-i18n="al3.p">Bildiğin kartı günler sonra gördüğünde de aynı cümleyle karşılaşmazsın. Ezber değil, konu hakimiyeti ölçülür.</p></div>
+    </div>
+    <p class="note" data-i18n="al.note">Ölçümümüze göre soru bankasındaki kartların %99'undan fazlasında aynı olgu birden çok soru köküyle sorulabiliyor. Bu yüzden her tekrarda soru farklı gelir, şıklar ise her seferinde yeniden karışır.</p>
+  </div>
+</section>
 
 <section class="alt" id="ozellikler">
   <div class="wrap">
@@ -166,26 +184,6 @@
   </div>
 </footer>
 
-<script>
-(function(){
-  var res=document.getElementById('result'), opts=document.querySelectorAll('.opt'), state='idle';
-  function show(){
-    var k=state==='right'?'demo.right':state==='wrong'?'demo.wrong':'demo.idle';
-    res.textContent=window.DR?window.DR.t(k):res.textContent;
-    res.className='result'+(state==='idle'?'':' '+state);
-  }
-  opts.forEach(function(o){
-    o.addEventListener('click',function(){
-      opts.forEach(function(x){x.classList.remove('right','wrong')});
-      var ok=o.dataset.ok==='1';
-      o.classList.add(ok?'right':'wrong');
-      if(!ok){opts.forEach(function(x){if(x.dataset.ok==='1')x.classList.add('right')})}
-      state=ok?'right':'wrong'; show();
-    });
-  });
-  document.addEventListener('langchange',show);
-  document.getElementById('yil').textContent=new Date().getFullYear();
-})();
-</script>
+<script>document.getElementById('yil').textContent=new Date().getFullYear();</script>
 </body>
 </html>

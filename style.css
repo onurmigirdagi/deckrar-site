@@ -75,3 +75,21 @@ footer a{color:var(--muted);margin-left:16px}
 .timeline .when{font-size:.82rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--brand)}
 .timeline h3{margin:2px 0 4px;font-size:1.1rem}.timeline p{margin:0;color:var(--muted)}
 @media(max-width:560px){.nav-right .btn{display:none}.nav .wrap{height:58px}}
+
+.demo{perspective:1100px}
+.subj-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.subj-tabs button{border:1px solid var(--line);background:var(--surface);color:var(--muted);padding:7px 14px;border-radius:999px;font-weight:700;font-size:.85rem;cursor:pointer}
+.subj-tabs button[aria-pressed="true"]{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+.qcard{transition:transform .32s ease,opacity .32s ease;will-change:transform}
+.qcard.leave{transform:translateX(-60px) rotate(-2deg);opacity:0}
+.qcard.enter{transform:translateX(60px);opacity:0;transition:none}
+.qcard.shake{animation:shake .5s}
+.qcard.flipout{transform:rotateY(90deg);opacity:.2}
+.qcard.flipin{transform:rotateY(-90deg);opacity:.2;transition:none}
+@keyframes shake{0%,100%{transform:translateX(0)}15%{transform:translateX(-10px)}30%{transform:translateX(9px)}45%{transform:translateX(-7px)}60%{transform:translateX(5px)}80%{transform:translateX(-2px)}}
+.opt.right{animation:pop .35s}
+@keyframes pop{50%{transform:scale(1.03)}}
+@media(prefers-reduced-motion:reduce){.qcard,.qcard.shake,.opt.right{animation:none;transition:none}}
+.hero>*{min-width:0}
+.opt span,.q,.tag{overflow-wrap:anywhere}
+.opt{width:100%}
