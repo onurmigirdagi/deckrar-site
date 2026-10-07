@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>deck.rar · YKS için aralıklı tekrar kartları</title>
+<meta name="description" content="deck.rar, YKS'ye hazırlananlar için her seferinde yeniden üretilen sorularla aralıklı tekrar yapan Android flashcard uygulamasıdır.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://deckrar.tech/">
+<meta property="og:title" content="deck.rar · YKS için aralıklı tekrar kartları">
+<meta property="og:description" content="Her tekrarda yeniden üretilen sorular, aralıklı tekrar, ilerleme takibi.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://deckrar.tech/">
+<link rel="stylesheet" href="style.css">
+<script src="i18n.js" defer></script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top"><img src="favicon.svg" alt="">deck.rar</a>
+    <nav><ul>
+      <li><a href="#ozellikler" data-i18n="nav.features">Özellikler</a></li>
+      <li><a href="#nasil" data-i18n="nav.how">Nasıl çalışır</a></li>
+      <li><a href="#dersler" data-i18n="nav.subjects">Dersler</a></li>
+      <li><a href="#gelisim" data-i18n="nav.journey">Gelişim</a></li>
+      <li><a href="#sss" data-i18n="nav.faq">SSS</a></li>
+      <li><a href="#iletisim" data-i18n="nav.contact">İletişim</a></li>
+    </ul></nav>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang-btn="tr" aria-pressed="true">TR</button>
+        <button type="button" data-lang-btn="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-primary" href="#iletisim" data-i18n="nav.cta">Haberdar ol</a>
+    </div>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <div class="hero">
+    <div>
+      <span class="eyebrow" data-i18n="hero.badge">Şubat 2026'dan beri geliştiriliyor · yayına hazırlanıyor</span>
+      <h1><span data-i18n="hero.h1a">Ezberi değil, </span><em data-i18n="hero.h1b">tekrarı</em><span data-i18n="hero.h1c"> planla.</span></h1>
+      <p class="lead" data-i18n="hero.lead">deck.rar, bildiğin konuyu seyrek, unutmaya yaklaştığın konuyu sık sorar. Kartların çoğu her açılışta yeniden üretilir, böylece cevabı değil konuyu öğrenirsin.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#iletisim" data-i18n="hero.cta1">Gelişmelerden haberdar ol</a>
+        <a class="btn btn-ghost" href="#nasil" data-i18n="hero.cta2">Nasıl çalışır?</a>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="qcard" id="qcard">
+        <span class="tag" data-i18n="demo.tag">Biyoloji · örnek soru</span>
+        <p class="q" data-i18n="demo.q">ATP en çok hangi organelde üretilir?</p>
+        <div class="opts" id="opts">
+          <button type="button" class="opt" data-ok="0"><b>A</b><span data-i18n="demo.o1">Ribozom</span></button>
+          <button type="button" class="opt" data-ok="1"><b>B</b><span data-i18n="demo.o2">Mitokondri</span></button>
+          <button type="button" class="opt" data-ok="0"><b>C</b><span data-i18n="demo.o3">Golgi cisimciği</span></button>
+          <button type="button" class="opt" data-ok="0"><b>D</b><span data-i18n="demo.o4">Lizozom</span></button>
+        </div>
+      </div>
+      <div class="result" id="result" aria-live="polite" data-i18n="demo.idle">Bir şık seç. Uygulamanın cevabına nasıl tepki verdiğini gör.</div>
+      <p class="rate-note" data-i18n="demo.note">Zorluğu sen işaretlemezsin: cevabın doğruluğu ve süresi tekrar zamanını belirler.</p>
+    </div>
+  </div>
+</main>
+
+<section class="alt" id="ozellikler">
+  <div class="wrap">
+    <h2 data-i18n="feat.h2">Çalışmayı verimli yapan şeyler</h2>
+    <p class="sub" data-i18n="feat.sub">Uygulamanın temelinde kart destesi, aralıklı tekrar motoru ve soru üreten bir altyapı var.</p>
+    <div class="grid">
+      <div class="feat"><div class="ico">🔁</div><h3 data-i18n="f1.h">Her seferinde yeni soru</h3><p data-i18n="f1.p">Soruyu veritabanı değil, kazanıma bağlı bir üretici kod çalışma anında oluşturur. Aynı kart her açılışta farklı şıklarla gelir, kartın türüne göre soru metni de değişebilir.</p></div>
+      <div class="feat"><div class="ico">⏱️</div><h3 data-i18n="f2.h">Aralıklı tekrar</h3><p data-i18n="f2.p">Her cevabın doğruluğuna ve süresine göre bir sonraki tekrar zamanı hesaplanır. Yanlış bildiğin kart yeniden öğrenme adımına girer, doğru bildikçe aralık uzar.</p></div>
+      <div class="feat"><div class="ico">📊</div><h3 data-i18n="f3.h">İlerleme ve istatistik</h3><p data-i18n="f3.p">Ders bazında çözülen soru sayısını ve genel gidişini ekranda gör. Neyi sık yanlış yaptığını kendin fark et.</p></div>
+      <div class="feat"><div class="ico">🏆</div><h3 data-i18n="f4.h">Seviye, XP ve coin</h3><p data-i18n="f4.p">Çalıştıkça XP ve coin kazanırsın, seviye atlarsın. Coin ile uygulama temalarını açabilirsin.</p></div>
+      <div class="feat"><div class="ico">☁️</div><h3 data-i18n="f5.h">Hesap ve senkronizasyon</h3><p data-i18n="f5.p">E-posta hesabınla ilerlemen, profilin ve temaların bulutta yedeklenir. Telefon değiştirsen de kaldığın yerden devam edersin.</p></div>
+      <div class="feat"><div class="ico">✅</div><h3 data-i18n="f6.h">Kalite kontrollü soru bankası</h3><p data-i18n="f6.p">Kartlar otomatik kalite kurallarından geçer: şık uzunlukları, çeldirici işlevi, ikinci doğru cevap riski gibi sorunlar tek tek denetlenir.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="nasil">
+  <div class="wrap">
+    <h2 data-i18n="how.h2">Üç adımda tekrar</h2>
+    <p class="sub" data-i18n="how.sub">Her gün birkaç dakika yeter. Hangi kartın ne zaman geleceğini uygulama planlar.</p>
+    <div class="steps">
+      <div class="step"><h3 data-i18n="s1.h">Soruyu çöz</h3><p data-i18n="s1.p">Ders ve konuya göre sana sıra gelen kartı aç, şıklardan birini seç.</p></div>
+      <div class="step"><h3 data-i18n="s2.h">Uygulama değerlendirir</h3><p data-i18n="s2.p">Doğru ya da yanlış olması ve ne kadar sürede cevapladığın, kartın bir sonraki tekrar tarihini belirler.</p></div>
+      <div class="step"><h3 data-i18n="s3.h">Zamanı gelince tekrarla</h3><p data-i18n="s3.p">Unutmaya yaklaştığın kartlar öne gelir. Bildiklerin seyrekleşir, çalışma süren zorlandığın konulara gider.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="dersler">
+  <div class="wrap">
+    <h2 data-i18n="sub.h2">Kapsanan dersler</h2>
+    <p class="sub" data-i18n="sub.sub">Soru bankası MEB kazanımlarına göre kurulur. Her kazanım atomik olgulara bölünür ve bu olguların her biri ayrı bir kart olarak çalışılır.</p>
+    <div class="stats">
+      <div class="stat"><b>6</b><span data-i18n="st1">ders</span></div>
+      <div class="stat"><b>5.600+</b><span data-i18n="st2">kart</span></div>
+      <div class="stat"><b>1.000+</b><span data-i18n="st3">soru üretici</span></div>
+      <div class="stat"><b>9–12</b><span data-i18n="st4">sınıf kazanımları</span></div>
+    </div>
+    <div class="chips" style="margin-top:28px">
+      <span class="chip" data-i18n="sub.bio">Biyoloji</span><span class="chip" data-i18n="sub.phy">Fizik</span><span class="chip" data-i18n="sub.chem">Kimya</span>
+      <span class="chip" data-i18n="sub.geo">Coğrafya</span><span class="chip" data-i18n="sub.hist">Tarih</span><span class="chip" data-i18n="sub.rel">Din Kültürü</span>
+    </div>
+    <p class="note" data-i18n="sub.note">Soru bankası düzenli olarak denetlenip iyileştirilir. Sayılar geliştirme aşamasındaki bankaya aittir ve zamanla değişir.</p>
+  </div>
+</section>
+
+<section id="gelisim">
+  <div class="wrap">
+    <h2 data-i18n="j.h2">Gelişim süreci</h2>
+    <p class="sub" data-i18n="j.sub">deck.rar bir günde yapılmış bir proje değil. İlk satırları Şubat 2026'da yazıldı ve düzenli olarak geliştirilmeye devam ediyor. Şu anda yayına hazırlık aşamasında.</p>
+    <ol class="timeline">
+      <li><span class="when" data-i18n="j1.d">Şubat 2026</span><h3 data-i18n="j1.h">Başlangıç</h3><p data-i18n="j1.p">Kart motoru, ders ve konu yapısı, ilk Android uygulaması.</p></li>
+      <li><span class="when" data-i18n="j2.d">Şubat 2026</span><h3 data-i18n="j2.h">Profil, mağaza ve bulut</h3><p data-i18n="j2.p">Profil ekranı, tema mağazası, XP ve coin, Supabase ile ilerleme senkronizasyonu, koyu tema.</p></li>
+      <li><span class="when" data-i18n="j3.d">Mart 2026</span><h3 data-i18n="j3.h">Yeniden öğrenme</h3><p data-i18n="j3.p">Yanlış bilinen kartlar için Anki tarzı yeniden öğrenme adımları ve veri tutarlılığı çalışmaları.</p></li>
+      <li><span class="when" data-i18n="j4.d">Haziran–Eylül 2026</span><h3 data-i18n="j4.h">Soru bankası ve kalite kapısı</h3><p data-i18n="j4.p">Soru üreticilerinin yazılması, otomatik kalite kapısı ve inceleme sistemi, çeldirici dengeleme.</p></li>
+      <li class="now"><span class="when" data-i18n="j5.d">Ekim 2026</span><h3 data-i18n="j5.h">Genişleme ve yayına hazırlık</h3><p data-i18n="j5.p">Biyoloji, fizik, kimya, coğrafya, tarih ve din kültürü içeriğinin denetimi ve genişletilmesi.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="alt" id="neden">
+  <div class="wrap">
+    <h2 data-i18n="why.h2">Neden deck.rar?</h2>
+    <p class="sub" data-i18n="why.sub">Hazır kartı ezberlemek bir noktada cevabı ezberlemeye dönüşür. Burada amaç konuyu gerçekten tutmak.</p>
+    <div class="grid">
+      <div class="feat"><h3 data-i18n="w1.h">Cevap değil konu</h3><p data-i18n="w1.p">Üretilen sorular aynı olguyu farklı köklerle ve farklı çeldiricilerle sorar.</p></div>
+      <div class="feat"><h3 data-i18n="w2.h">Dengeli çeldiriciler</h3><p data-i18n="w2.p">Yanlış şıklar bilinen yanılgıları temsil edecek şekilde kurulur, "bariz yanlış" şık sayısı sınırlı tutulur.</p></div>
+      <div class="feat"><h3 data-i18n="w3.h">Kısa oturumlar</h3><p data-i18n="w3.p">Günlük birkaç dakikalık çalışma için tasarlandı. Bırakıp kaldığın yerden devam edersin.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="sss">
+  <div class="wrap" style="max-width:820px">
+    <h2 data-i18n="faq.h2">Sık sorulanlar</h2>
+    <p class="sub" data-i18n="faq.sub">Aklına takılan bir şey varsa aşağıdan ulaşabilirsin.</p>
+    <details><summary data-i18n="q1">deck.rar hangi platformlarda çalışıyor?</summary><p data-i18n="a1">Şu an Android için geliştirilmektedir ve yayına hazırlanmaktadır. Çıkış duyurusu ve mağaza bağlantısı hazır olduğunda bu sayfada yer alacak.</p></details>
+    <details><summary data-i18n="q2">Aralıklı tekrar nedir?</summary><p data-i18n="a2">Bir bilgiyi unutmaya yaklaştığın anda tekrar etmeye dayanan bir çalışma yöntemidir. Uygulama, cevabının doğruluğuna ve süresine göre her kartın bir sonraki gösterim zamanını hesaplar.</p></details>
+    <details><summary data-i18n="q3">Yanlış bilirsem soru değişiyor mu?</summary><p data-i18n="a3">Kart aynı oturumda yeniden sorulur ve tekrar öğrenme aşamasına girer. Kart yeniden üretildiği için şıklar yeniden karışır. Soru metninin de değişip değişmeyeceği kartın türüne bağlıdır: bazı kartlar sabit bir soruyu, bazıları her seferinde farklı üretilmiş bir soruyu sorar.</p></details>
+    <details><summary data-i18n="q4">Zor, orta, kolay seçeneğini ben mi işaretliyorum?</summary><p data-i18n="a4">Hayır. Cevabın doğru olup olmadığı ve ne kadar sürede verdiğin, kartın bir sonraki tekrar zamanını belirler.</p></details>
+    <details><summary data-i18n="q5">Hesap açmam gerekiyor mu?</summary><p data-i18n-html="a5h">E-posta hesabı ilerlemeni, profilini ve temalarını bulutta yedeklemek için kullanılır. Ayrıntılar için <a href="gizlilik.html">gizlilik sayfasına</a> bakabilirsin.</p></details>
+    <details><summary data-i18n="q6">Soru bankası nasıl denetleniyor?</summary><p data-i18n="a6">Kartlar otomatik kalite kurallarından geçer: şık uzunlukları, çeldirici işlevi, mutlak sözcük kullanımı gibi ölçütler her kart için kontrol edilir. Ayrıca kartlar anlamsal olarak da incelenir. Bir hata bulursan bize yaz.</p></details>
+    <details><summary data-i18n="q7">Hata ya da yanlış bir kart gördüm, ne yapayım?</summary><p data-i18n-html="a7h">Kartın dersini, konusunu ve ekranda gördüğün metni <a href="mailto:info@deckrar.tech">info@deckrar.tech</a> adresine gönder, inceleyelim.</p></details>
+  </div>
+</section>
+
+<section id="iletisim">
+  <div class="wrap">
+    <div class="final">
+      <h2 data-i18n="c.h2">Çıkıştan haberdar ol, geri bildirimini paylaş</h2>
+      <p data-i18n="c.p">Öneriler, bulduğun hatalar ve iş birliği teklifleri için bize yaz.</p>
+      <a class="btn btn-primary" href="mailto:info@deckrar.tech">info@deckrar.tech</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yil">2026</span> deck.rar</span>
+    <span><a href="gizlilik.html" data-i18n="foot.priv">Gizlilik</a><a href="#iletisim" data-i18n="foot.contact">İletişim</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var res=document.getElementById('result'), opts=document.querySelectorAll('.opt'), state='idle';
+  function show(){
+    var k=state==='right'?'demo.right':state==='wrong'?'demo.wrong':'demo.idle';
+    res.textContent=window.DR?window.DR.t(k):res.textContent;
+    res.className='result'+(state==='idle'?'':' '+state);
+  }
+  opts.forEach(function(o){
+    o.addEventListener('click',function(){
+      opts.forEach(function(x){x.classList.remove('right','wrong')});
+      var ok=o.dataset.ok==='1';
+      o.classList.add(ok?'right':'wrong');
+      if(!ok){opts.forEach(function(x){if(x.dataset.ok==='1')x.classList.add('right')})}
+      state=ok?'right':'wrong'; show();
+    });
+  });
+  document.addEventListener('langchange',show);
+  document.getElementById('yil').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

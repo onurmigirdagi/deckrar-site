@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://deckrar.tech/sitemap.xml
