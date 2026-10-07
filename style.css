@@ -93,3 +93,4 @@ footer a{color:var(--muted);margin-left:16px}
 .hero>*{min-width:0}
 .opt span,.q,.tag{overflow-wrap:anywhere}
 .opt{width:100%}
+.ico svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
